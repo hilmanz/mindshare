@@ -1,0 +1,360 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link href="css/mindshare.css" rel="stylesheet" type="text/css"  />
+<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.7/themes/redmond/jquery-ui.css" type="text/css" />
+<link rel="stylesheet" href="css/ui.daterangepicker.css" type="text/css" />
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.7/jquery-ui.min.js"></script>
+<script type="text/javascript" src="js/date.js"></script>
+<script type="text/javascript" src="js/daterangepicker.jQuery.js"></script>
+<script type="text/javascript">	
+    $(function(){
+          $('.date').daterangepicker({arrows: true}); 
+     });
+</script>
+<!-- PNG FIX -->
+<script type="text/javascript" src="js/jquery.pngFix.pack.js"></script> 
+<script type="text/javascript" src="js/jquery.pngFix.js"></script>
+<script type="text/javascript" src="js/jquery.validate.js"></script>
+<script type="text/javascript" src="js/jquery.effects.core.js"></script>
+<script type="text/javascript" src="js/jquery.effects.shake.js"></script>
+<script type="text/javascript" src="js/custom-form-elements.js"></script>
+<script type="text/javascript" src="js/highcharts.js"></script>
+<script type="text/javascript">
+	var chart;
+	//LINE
+	$(document).ready(function() {
+		chart = new Highcharts.Chart({
+			chart: {
+				renderTo: 'linechart',
+				type: 'line',
+				backgroundColor: 'transparent',
+				marginRight: 40,
+				marginLeft: 40,
+				marginBottom: 25
+			},
+			 credits: {
+				enabled: false
+			},
+			title: {
+				text: false
+			},
+			xAxis: {
+				categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
+					'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+			},
+			yAxis: {
+				title: false,
+				plotLines: [{
+					value: 0,
+					width: 1,
+					color: '#808080'
+				}]
+			},
+			tooltip: {
+				formatter: function() {
+						return '<b>'+ this.series.name +'</b><br/>'+
+						this.x +': '+ this.y +'Â°C';
+				}
+			},
+			legend: false,
+			series: [{
+				name: 'Tokyo',
+				data: [7.0, 6.9, 9.5, 14.5, 18.2, 21.5, 25.2, 26.5, 23.3, 18.3, 13.9, 9.6]
+			}, {
+				name: 'New York',
+				data: [-0.2, 0.8, 5.7, 11.3, 17.0, 22.0, 24.8, 24.1, 20.1, 14.1, 8.6, 2.5]
+			}, {
+				name: 'Berlin',
+				data: [-0.9, 0.6, 3.5, 8.4, 13.5, 17.0, 18.6, 17.9, 14.3, 9.0, 3.9, 1.0]
+			}, {
+				name: 'London',
+				data: [3.9, 4.2, 5.7, 8.5, 11.9, 15.2, 17.0, 16.6, 14.2, 10.3, 6.6, 4.8]
+			}]
+		});
+	});
+	
+	
+	//PIE
+	var chart2;
+	$(document).ready(function() {
+	chart2 = new Highcharts.Chart({
+		chart: {
+			renderTo: 'pie',
+			plotBackgroundColor: null,
+			backgroundColor: 'transparent',
+			plotBorderWidth: null,
+			plotShadow: false
+		},
+		credits: {
+			enabled: false
+		},
+		title: {
+			text: false
+		},
+		tooltip: {
+			formatter: function() {
+				return '<b>'+ this.point.name +'</b>: '+ this.percentage +' %';
+			}
+		},
+		plotOptions: {
+			pie: {
+				allowPointSelect: true,
+				cursor: 'pointer',
+				dataLabels: {
+					enabled: true,
+					color: '#ffffff',
+					connectorColor: '#ffffff',
+					formatter: function() {
+						return this.point.name +'<br>'+ this.percentage +' %';
+					}
+				}
+			}
+		},
+		series: [{
+			type: 'pie',
+			name: 'Browser share',
+			data: [
+				['Firefox',   45.0],
+				['IE',       26.8],
+				{
+					name: 'Chrome',
+					y: 12.8,
+					sliced: true,
+					selected: true
+				},
+				['Safari',    8.5],
+				['Opera',     6.2],
+				['Others',   0.7]
+			]
+		}]
+	});
+});
+</script>
+<title>MINDSHARE</title>
+</head>
+
+<body>
+<div id="body">
+	<div id="universal">
+    	<div id="header">
+        	<div id="top">
+            	<div id="logo">
+                	<a href="#" class="logo">&nbsp;</a>
+                </div><!-- end #logo -->
+                <div id="brand">
+                	<a href="#" class="brand-name">Brand-name</a>
+                </div><!-- end #brand -->
+            </div><!-- end #top -->
+            <div id="head-icon">
+            	<a href="index.html" class="currentSum">&nbsp;</a>
+            	<a href="facebook.html" class="icon-facebook">&nbsp;</a>
+            	<a href="twitter.html" class="icon-twitter">&nbsp;</a>
+            </div><!-- end #head-icon -->
+        </div><!-- end #header -->
+        <div id="container">
+            <div class="summary-stats">
+            	<div class="twitter-stats embos">
+                	<div class="entry">
+                		<h1>Twitter</h1>
+                        <div class="blackbox">
+                        	<h3 class="blue">10,984</h3>
+                            <span class="caption">Mention</span>
+                        </div><!-- end.blackbox -->
+                        <div class="blackbox">
+                        	<h3 class="blue">10,984</h3>
+                            <span class="caption">Impression</span>
+                        </div><!-- end.blackbox -->
+                        <div class="blackbox nomargin">
+                        	<h3 class="blue">10,984</h3>
+                            <span class="caption">Poeple</span>
+                        </div><!-- end.blackbox -->
+                    </div><!-- end.entry -->
+                </div><!-- end.twitter-stats -->
+            	<div class="facebook-stats embos">
+                	<div class="entry">
+                		<h1>Facebook</h1>
+                        <div class="blackbox">
+                        	<h3 class="purple">10,984</h3>
+                            <span class="caption">Likes</span>
+                        </div><!-- end.blackbox -->
+                        <div class="blackbox">
+                        	<h3 class="purple">10,984</h3>
+                            <span class="caption">Stories</span>
+                        </div><!-- end.blackbox -->
+                        <div class="blackbox nomargin">
+                        	<h3 class="purple">10,984</h3>
+                            <span class="caption">Views</span>
+                        </div><!-- end.blackbox -->
+                    </div><!-- end.entry -->
+                </div><!-- end.facebook-stats -->
+            </div><!-- end.summary-stats -->
+            <div id="content">
+            	<div class="row">
+                    <div class="selectdate">
+                        <form>
+                            <label>RANGE</label>
+                            <input type="text" value="4/23/99" class="date" />	
+                        </form>
+                    </div><!-- end.selectdate -->
+                    <div class="social-filter">
+                    	<form>
+                        	 <div class="checkboxs">
+                                 <input type="radio" name="social" class="styled" />
+                                 <label>Twitter</label>
+                                 <input type="radio" name="social" class="styled" />
+                                 <label>Facebook</label>
+                             </div><!-- end.checkboxs -->
+                       		 <div class="blackbox socialfilter">
+                             	<input type="checkbox" name="a" class="styled" />
+                                <label class="yellow">Mentions</label>
+                             	<input type="checkbox" name="a" class="styled" />
+                                <label class="orange">Impressions</label>
+                             	<input type="checkbox" name="a" class="styled" />
+                                <label class="green">People</label>
+                         	 </div><!-- end.socialfilter -->
+                        </form>
+                    </div><!-- end.social-filter -->
+                </div><!-- end.row -->
+            	<div class="row border">
+                	<div class="cart-full embos">
+                    	<div id="linechart" class="chart">
+                        	
+                        </div>
+                    </div><!-- end.cart-full -->
+                </div><!-- end.row -->
+            	<div class="row border">
+                	<div class="title fleft">
+                    	<h3>SENTIMENT</h3>
+                        <div class="box embos">
+                            <div id="pie" class="chartpie">
+                            
+                            </div>
+                        </div><!-- end.cart-half -->
+                    </div>
+                	<div class="title fright">
+                    	<h3>WORDCLOUD</h3>
+                        <div class="wordcloud fright">
+                            <img src="images/wordcloud.png" />
+                        </div><!-- end.cart-half -->
+                    </div>
+                </div><!-- end.row -->
+            	<div class="row border">
+                    	<h3>INFLUENCERS</h3>
+                	<div class="title fleft">
+                        <div class="box embos height233">
+                        	<div class="headergreen">FANS</div>
+                            <div style="padding: 20px 25px 15px;">
+                            	<div class="box-profile">
+                                	<img src="images/user/1.jpg" />
+                                    <div class="box-name">
+                                    	acit_jazz<br />
+                                    	+50
+                                    </div>
+                                </div>
+                                <div class="box-profile">
+                                	<img src="images/user/1.jpg" />
+                                    <div class="box-name">
+                                    	acit_jazz<br />
+                                    	+50
+                                    </div>
+                                </div>
+                                <div class="box-profile">
+                                	<img src="images/user/1.jpg" />
+                                    <div class="box-name">
+                                    	acit_jazz<br />
+                                    	+50
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="hr"></div>
+                             <div style="padding: 20px 25px;">
+                            	<div class="box-profile">
+                                	<img src="images/user/1.jpg" />
+                                    <div class="box-name">
+                                    	acit_jazz<br />
+                                    	+50
+                                    </div>
+                                </div>
+                                <div class="box-profile">
+                                	<img src="images/user/1.jpg" />
+                                    <div class="box-name">
+                                    	acit_jazz<br />
+                                    	+50
+                                    </div>
+                                </div>
+                                <div class="box-profile">
+                                	<img src="images/user/1.jpg" />
+                                    <div class="box-name">
+                                    	acit_jazz<br />
+                                    	+50
+                                    </div>
+                                </div>
+                            </div>
+                        </div><!-- end.cart-half -->
+                    </div>
+                	<div class="title fright">
+                        <div class="box embos height233">
+                        	<div class="headerred">HATERS</div>
+                            <div style="padding: 20px 25px 15px;">
+                            	<div class="box-profile">
+                                	<img src="images/user/1.jpg" />
+                                    <div class="box-name">
+                                    	acit_jazz<br />
+                                    	+50
+                                    </div>
+                                </div>
+                                <div class="box-profile">
+                                	<img src="images/user/1.jpg" />
+                                    <div class="box-name">
+                                    	acit_jazz<br />
+                                    	+50
+                                    </div>
+                                </div>
+                                <div class="box-profile">
+                                	<img src="images/user/1.jpg" />
+                                    <div class="box-name">
+                                    	acit_jazz<br />
+                                    	+50
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="hr"></div>
+                             <div style="padding: 20px 25px;">
+                            	<div class="box-profile">
+                                	<img src="images/user/1.jpg" />
+                                    <div class="box-name">
+                                    	acit_jazz<br />
+                                    	+50
+                                    </div>
+                                </div>
+                                <div class="box-profile">
+                                	<img src="images/user/1.jpg" />
+                                    <div class="box-name">
+                                    	acit_jazz<br />
+                                    	+50
+                                    </div>
+                                </div>
+                                <div class="box-profile">
+                                	<img src="images/user/1.jpg" />
+                                    <div class="box-name">
+                                    	acit_jazz<br />
+                                    	+50
+                                    </div>
+                                </div>
+                            </div>
+                        </div><!-- end.cart-half -->
+                    </div>
+                </div><!-- end.row -->
+                
+            </div><!-- end #content -->
+        </div><!-- end #container -->
+        <div id="footer">
+        </div><!-- end #footer -->
+    </div><!-- end.#universal -->
+</div><!-- end #body -->
+
+</body>
+</html>

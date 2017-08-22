@@ -1,0 +1,448 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link href="css/mindshare.css" rel="stylesheet" type="text/css"  />
+<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.7/themes/redmond/jquery-ui.css" type="text/css" />
+<link rel="stylesheet" href="css/ui.daterangepicker.css" type="text/css" />
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.7/jquery-ui.min.js"></script>
+<script type="text/javascript" src="js/date.js"></script>
+<script type="text/javascript" src="js/daterangepicker.jQuery.js"></script>
+<script type="text/javascript">	
+    $(function(){
+          $('.date').daterangepicker({arrows: true}); 
+     });
+</script>
+<!-- PNG FIX -->
+<script type="text/javascript" src="js/jquery.pngFix.pack.js"></script> 
+<script type="text/javascript" src="js/jquery.pngFix.js"></script>
+<script type="text/javascript" src="js/jquery.validate.js"></script>
+<script type="text/javascript" src="js/jquery.effects.core.js"></script>
+<script type="text/javascript" src="js/jquery.effects.shake.js"></script>
+<script type="text/javascript" src="js/custom-form-elements.js"></script>
+<script type="text/javascript" src="js/highcharts.js"></script>
+<script type="text/javascript">
+	var chart;
+	//LINE
+	$(document).ready(function() {
+		chart = new Highcharts.Chart({
+			chart: {
+				renderTo: 'lineatas',
+				type: 'line',
+				backgroundColor: 'transparent',
+				marginRight: 40,
+				height: 230,
+				marginLeft: 40,
+				marginBottom: 25
+			},
+			 credits: {
+				enabled: false
+			},
+			title: {
+				text: false
+			},
+			xAxis: {
+				categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
+					'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+			},
+			yAxis: {
+				title: false,
+				plotLines: [{
+					value: 0,
+					width: 1,
+					color: '#808080'
+				}]
+			},
+			tooltip: {
+				formatter: function() {
+						return '<b>'+ this.series.name +'</b><br/>'+
+						this.x +': '+ this.y +'Â°C';
+				}
+			},
+			legend: false,
+			series: [{
+				name: 'Tokyo',
+				data: [7.0, 6.9, 9.5, 14.5, 18.2, 21.5, 25.2, 26.5, 23.3, 18.3, 13.9, 9.6]
+			}, {
+				name: 'New York',
+				data: [-0.2, 0.8, 5.7, 11.3, 17.0, 22.0, 24.8, 24.1, 20.1, 14.1, 8.6, 2.5]
+			}, {
+				name: 'Berlin',
+				data: [-0.9, 0.6, 3.5, 8.4, 13.5, 17.0, 18.6, 17.9, 14.3, 9.0, 3.9, 1.0]
+			}, {
+				name: 'London',
+				data: [3.9, 4.2, 5.7, 8.5, 11.9, 15.2, 17.0, 16.6, 14.2, 10.3, 6.6, 4.8]
+			}]
+		});
+	});
+	
+	//Area Chart
+	var chart;
+	$(document).ready(function() {
+		chart = new Highcharts.Chart({
+			chart: {
+				renderTo: 'areaMini',
+				type: 'area',
+				backgroundColor: 'transparent',
+				height: 230,
+				width: 450,		
+				marginLeft: 50,
+				marginBottom: 25
+			},
+			credits: {
+				enabled: false
+			},
+			title: {
+				text: false
+			},
+			legend: false,
+			xAxis: {
+				labels: {
+					formatter: function() {
+						return this.value; // clean, unformatted number for year
+					}
+				}
+			},
+			yAxis: {
+				title: false,
+				labels: {
+					formatter: function() {
+						return this.value / 1000 +'k';
+					}
+				}
+			},
+			tooltip: {
+				formatter: function() {
+					return this.series.name +' produced <b>'+
+						Highcharts.numberFormat(this.y, 0) +'</b><br/>warheads in '+ this.x;
+				}
+			},
+			plotOptions: {
+				area: {
+					pointStart: 1940,
+					marker: {
+						enabled: false,
+						symbol: 'circle',
+						radius: 2,
+						states: {
+							hover: {
+								enabled: true
+							}
+						}
+					}
+				}
+			},
+			series: [{
+				name: 'USA',
+				data: [null, null, null, null, null, 6 , 11, 32, 110, 235, 369, 640,
+					1005, 1436, 2063, 3057, 4618, 6444, 9822, 15468, 20434, 24126,
+					27387, 29459, 31056, 31982, 32040, 31233, 29224, 27342, 26662,
+					26956, 27912, 28999, 28965, 27826, 25579, 25722, 24826, 24605,
+					24304, 23464, 23708, 24099, 24357, 24237, 24401, 24344, 23586,
+					22380, 21004, 17287, 14747, 13076, 12555, 12144, 11009, 10950,
+					10871, 10824, 10577, 10527, 10475, 10421, 10358, 10295, 10104 ]
+			}, {
+				name: 'USSR/Russia',
+				data: [null, null, null, null, null, null, null , null , null ,null,
+				5, 25, 50, 120, 150, 200, 426, 660, 869, 1060, 1605, 2471, 3322,
+				4238, 5221, 6129, 7089, 8339, 9399, 10538, 11643, 13092, 14478,
+				15915, 17385, 19055, 21205, 23044, 25393, 27935, 30062, 32049,
+				33952, 35804, 37431, 39197, 45000, 43000, 41000, 39000, 37000,
+				35000, 33000, 31000, 29000, 27000, 25000, 24000, 23000, 22000,
+				21000, 20000, 19000, 18000, 18000, 17000, 16000]
+			}]
+		});
+	});
+	
+	
+	//Stacked Column
+	var chart;
+	$(document).ready(function() {
+		chart = new Highcharts.Chart({
+			chart: {
+				renderTo: 'stacked',
+				backgroundColor: 'transparent',
+				type: 'column'
+			},
+			title: false,
+			xAxis: {
+				categories: ['Apples', 'Oranges', 'Pears', 'Grapes']
+			},
+			yAxis: {
+				min: 0,
+				title:false,
+				stackLabels: {
+					enabled: true,
+					style: {
+						fontWeight: 'bold',
+						color: (Highcharts.theme && Highcharts.theme.textColor) || 'gray'
+					}
+				}
+			},
+			credits: {
+				enabled: false
+			},
+			legend: false,
+			tooltip: {
+				formatter: function() {
+					return '<b>'+ this.x +'</b><br/>'+
+						this.series.name +': '+ this.y +'<br/>'+
+						'Total: '+ this.point.stackTotal;
+				}
+			},
+			plotOptions: {
+				column: {
+					stacking: 'normal',
+					dataLabels: {
+						enabled: true,
+						color: (Highcharts.theme && Highcharts.theme.dataLabelsColor) || 'white'
+					}
+				}
+			},
+			series: [{
+				name: 'John',
+				data: [5, 3, 4, 7]
+			}, {
+				name: 'Jane',
+				data: [2, 2, 3, 2]
+			}]
+		});
+	});
+	
+	//PIE
+	var chart2;
+	$(document).ready(function() {
+	chart2 = new Highcharts.Chart({
+		chart: {
+			renderTo: 'pie',
+			plotBackgroundColor: null,
+			backgroundColor: 'transparent',
+			plotBorderWidth: null,
+			plotShadow: false
+		},
+		credits: {
+			enabled: false
+		},
+		title: {
+			text: false
+		},
+		tooltip: {
+			formatter: function() {
+				return '<b>'+ this.point.name +'</b>: '+ this.percentage +' %';
+			}
+		},
+		plotOptions: {
+			pie: {
+				allowPointSelect: true,
+				cursor: 'pointer',
+				dataLabels: {
+					enabled: true,
+					color: '#ffffff',
+					connectorColor: '#ffffff',
+					formatter: function() {
+						return this.point.name +'<br>'+ this.percentage +' %';
+					}
+				}
+			}
+		},
+		series: [{
+			type: 'pie',
+			name: 'Browser share',
+			data: [
+				['Firefox',   45.0],
+				['IE',       26.8],
+				{
+					name: 'Chrome',
+					y: 12.8,
+					sliced: true,
+					selected: true
+				},
+				['Safari',    8.5],
+				['Opera',     6.2],
+				['Others',   0.7]
+			]
+		}]
+	});
+	
+	//LINE BAWAH
+	$(document).ready(function() {
+		chart = new Highcharts.Chart({
+			chart: {
+				renderTo: 'linechart',
+				type: 'line',
+				backgroundColor: 'transparent',
+				marginRight: 40,
+				marginLeft: 40,
+				marginBottom: 25
+			},
+			 credits: {
+				enabled: false
+			},
+			title: {
+				text: false
+			},
+			xAxis: {
+				categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
+					'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+			},
+			yAxis: {
+				title: false,
+				plotLines: [{
+					value: 0,
+					width: 1,
+					color: '#808080'
+				}]
+			},
+			tooltip: {
+				formatter: function() {
+						return '<b>'+ this.series.name +'</b><br/>'+
+						this.x +': '+ this.y +'Â°C';
+				}
+			},
+			legend: false,
+			series: [{
+				name: 'Tokyo',
+				data: [7.0, 6.9, 9.5, 14.5, 18.2, 21.5, 25.2, 26.5, 23.3, 18.3, 13.9, 9.6]
+			}, {
+				name: 'New York',
+				data: [-0.2, 0.8, 5.7, 11.3, 17.0, 22.0, 24.8, 24.1, 20.1, 14.1, 8.6, 2.5]
+			}, {
+				name: 'Berlin',
+				data: [-0.9, 0.6, 3.5, 8.4, 13.5, 17.0, 18.6, 17.9, 14.3, 9.0, 3.9, 1.0]
+			}, {
+				name: 'London',
+				data: [3.9, 4.2, 5.7, 8.5, 11.9, 15.2, 17.0, 16.6, 14.2, 10.3, 6.6, 4.8]
+			}]
+		});
+	});
+});
+</script>
+<title>MINDSHARE</title>
+</head>
+
+<body>
+<div id="body">
+	<div id="universal">
+    	<div id="header" style="padding:20px 0 0 0;">
+        	<div id="top">
+            	<div id="logo">
+                	<a href="#" class="logo">&nbsp;</a>
+                </div><!-- end #logo -->
+                <div id="brand">
+                	<a href="#" class="brand-name">Brand-name</a>
+                </div><!-- end #brand -->
+            </div><!-- end #top -->
+            <div id="head-icon">
+            	<a href="index.html" class="icon-summary">&nbsp;</a>
+            	<a href="facebook.html" class="currentFB">&nbsp;</a>
+            	<a href="twitter.html" class="icon-twitter">&nbsp;</a>
+            </div><!-- end #head-icon -->
+        </div><!-- end #header -->
+        <div id="container">
+            
+            <div id="content">
+            	
+            	<div class="row border">
+                	<div class="title fleft">                 	
+                        <div class="box embos">
+                        	<div class="blackboxMini" style="margin: 25px 10px 25px 25px;">
+                                <h3 class="orange">10,984</h3>
+                                <span class="caption">Likes</span>
+                        	</div><!-- end.blackbox -->
+                            <div class="blackboxMini" style="margin: 25px 10px 25px 0;">
+                                <h3 class="yellow">10,984</h3>
+                                <span class="caption">People</span>
+                        	</div><!-- end.blackbox -->
+                            <div class="blackboxMini" style="margin: 25px 10px 25px 0;">
+                                <h3 class="green">10,984</h3>
+                                <span class="caption">Posts</span>
+                        	</div><!-- end.blackbox -->
+                            <div id="lineatas" class="chartmini">
+                            
+                            </div>
+                        </div><!-- end.cart-half -->
+                    </div>
+                	<div class="title fright">
+                         <div class="box embos">
+                         	<div class="blackboxMini" style="margin: 25px 10px 25px 25px;">
+                                <h3 class="white">10,984</h3>
+                                <span class="caption">Total Reach</span>
+                        	</div><!-- end.blackbox -->
+                            <form>                	
+                       		 <div class="blackbox socialfilter"  style="float:right; margin: 63px 20px 0 0;">
+                             	<input type="checkbox" name="a" class="styled" />
+                                <label class="chartLabel blue">Paid</label>
+                             	<input type="checkbox" name="a" class="styled" />
+                                <label class="chartLabel red">Organic</label>
+                             	<input type="checkbox" name="a" class="styled" />
+                                <label class="chartLabel green">Viral</label>
+                         	 </div><!-- end.socialfilter -->
+                        	</form>
+                            <div id="areaMini" class="chartmini">
+                            
+                            </div>
+                        </div><!-- end.cart-half -->
+                    </div>
+                </div><!-- end.row -->
+            	<div class="row border">
+                	<div class="title fleft">
+                    	<h3 style="width:200px;float:left;">DEMOGRAPHIC</h3>
+                        <form>                	
+                       		 <div class="blackbox socialfilter"  style="float:right; margin: 10px 0 0 0;">
+                             	<input type="checkbox" name="a" class="styled" />
+                                <label class="chartLabel red">Male</label>
+                             	<input type="checkbox" name="a" class="styled" />
+                                <label class="chartLabel blue">Female</label>
+                         	 </div><!-- end.socialfilter -->
+                        	</form>
+                        <div class="box embos">                      	
+                            <div id="stacked" class="chartpie">
+                            
+                            </div>
+                        </div><!-- end.cart-half -->
+                    </div>
+                	<div class="title fright">
+                         <h3>COUNTRY</h3>
+                         <div class="box embos">
+                            <div id="pie" class="chartpie">
+                            
+                            </div>
+                        </div><!-- end.cart-half -->
+                    </div>
+                </div><!-- end.row -->
+                <div class="row">
+                    <div class="selectdate">
+                        <form>
+                            <label style="width: 140px">CONVERSATIONS</label>
+                            <input type="text" value="4/23/99" class="date" />	
+                        </form>
+                    </div><!-- end.selectdate -->
+                    <div class="social-filter">
+                    	<form>                	
+                       		 <div class="blackbox socialfilter"  style="float:right;">
+                             	<input type="checkbox" name="a" class="styled" />
+                                <label class="orange">Stories</label>
+                             	<input type="checkbox" name="a" class="styled" />
+                                <label class="green">Viral</label>
+                         	 </div><!-- end.socialfilter -->
+                        </form>
+                    </div><!-- end.social-filter -->
+                </div><!-- end.row -->
+            	<div class="row border">
+                	<div class="cart-full embos">
+                    	<div id="linechart" class="chart">
+                        	
+                        </div>
+                    </div><!-- end.cart-full -->
+                </div><!-- end.row -->
+               
+            </div><!-- end #content -->
+        </div><!-- end #container -->
+        <div id="footer">
+        </div><!-- end #footer -->
+    </div><!-- end.#universal -->
+</div><!-- end #body -->
+
+</body>
+</html>
